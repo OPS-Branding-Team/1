@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>NAKWON SHOWCASE — 관리자</title>
+<link rel="icon" href="assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+<div id="app">
+  <header>
+    <div class="brand"><img src="assets/icon.png" alt=""><div><b>NAKWON SHOWCASE</b><span>방송 컨트롤</span></div></div>
+    <div class="stats">
+      <div class="pill" id="pConn"><i></i><span>연결 중…</span></div>
+      <div class="pill" id="pLed"><i></i><span>LED 확인 중</span></div>
+      <div class="pill dim" id="pRoom"><span></span></div>
+      <div class="pill dim" id="pAt"><span>—</span></div>
+    </div>
+    <div class="seg" id="modeSeg" role="group" aria-label="송출 방식">
+      <button data-m="instant" class="on">즉시 송출</button>
+      <button data-m="cue">큐 → 송출</button>
+    </div>
+  </header>
+  <div id="banner" hidden></div>
+
+  <section class="preview">
+    <div class="pv-wrap">
+      <iframe id="pv" src="led.html?preview=1" title="LED 미리보기" tabindex="-1"></iframe>
+      <div class="pv-seam"></div>
+      <div class="pv-badge" id="pvBadge">ON AIR</div>
+    </div>
+    <div class="pv-meta"><span>◀ 좌면 6960</span><span>우면 6960 ▶</span></div>
+  </section>
+
+  <main id="main">
+    <nav class="secs" id="secs" aria-label="섹션"></nav>
+    <div class="steps-wrap">
+      <div class="now" id="now"></div>
+      <div class="steps" id="steps"></div>
+    </div>
+  </main>
+
+  <section class="fx">
+    <label class="fog">안개 <input type="range" id="fog" min="0" max="100" step="5"><output id="fogv">70</output></label>
+    <div class="fx-grp">
+      <button class="fxb tog" id="bBlack">블랙아웃</button>
+      <button class="fxb tog" id="bGuide">정렬 가이드</button>
+      <button class="fxb tog" id="bLock">🔒 잠금</button>
+    </div>
+  </section>
+
+  <footer id="bar">
+    <button class="nav prev" id="bPrev"><small>이전</small><span id="lPrev">—</span></button>
+    <button class="live" id="bLive" hidden><b>LIVE</b><small>큐를 송출</small></button>
+    <button class="nav next" id="bNext"><small>다음</small><span id="lNext">—</span></button>
+  </footer>
+</div>
+<script src="js/config.js"></script>
+<script src="js/content.js"></script>
+<script src="js/sync.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

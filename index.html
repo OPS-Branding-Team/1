@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NAKWON SHOWCASE</title>
+<link rel="icon" href="assets/icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'GmarketSans';src:url('fonts/GmarketSansBold.woff2') format('woff2');font-weight:700}
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;background:#070506 radial-gradient(60% 80% at 0% 100%,rgba(181,27,29,.35),transparent 70%),radial-gradient(50% 70% at 100% 0%,rgba(76,194,202,.16),transparent 70%);color:#efe9e4;font-family:'Noto Sans KR','Noto Sans CJK KR','Malgun Gothic',sans-serif;display:flex;align-items:center;justify-content:center;padding:24px}
+main{width:min(760px,100%)}
+img.logo{width:min(420px,80%);display:block;margin-bottom:34px}
+h1{font-family:'GmarketSans',sans-serif;font-size:44px;font-weight:400;margin-bottom:8px}
+p{color:#9d9290;line-height:1.6;margin-bottom:28px}
+.cards{display:grid;gap:14px}
+a.c{display:block;padding:22px 24px;border:1px solid #2a2e32;background:rgba(18,20,22,.85);border-radius:14px;text-decoration:none;color:inherit;transition:.15s}
+a.c:hover{border-color:#4cc2ca}
+a.c b{display:block;font-size:22px;margin-bottom:4px}
+a.c span{color:#9d9290;font-size:14px}
+a.c.r{border-color:#b51b1d}
+.m{margin-top:22px;font-size:13px;color:#9d9290}
+.m code{color:#a6f4f7}
+</style>
+</head>
+<body>
+<main>
+  <img class="logo" src="assets/logo.png" alt="NAKWON LAST PARADISE">
+  <h1>쇼케이스 라이브 컨트롤</h1>
+  <p>LED 송출 PC에서는 <b>LED 화면</b>을, 디렉터 태블릿에서는 <b>관리자</b>를 열어주세요. 두 화면은 같은 방(room)에서 연결됩니다.</p>
+  <div class="cards">
+    <a class="c r" id="aAdmin" href="admin.html"><b>관리자 (디렉터 리모컨)</b><span>태블릿·PC에서 장면을 넘기고 연출 효과를 실행합니다.</span></a>
+    <a class="c" id="aLed" href="led.html"><b>LED 화면 (13920 × 2160)</b><span>송출 PC에서 전체 화면(F11)으로 열어두세요.</span></a>
+  </div>
+  <div class="m" id="info"></div>
+</main>
+<script src="js/config.js"></script>
+<script src="js/sync.js"></script>
+<script>
+  const q = location.search;
+  document.getElementById('aAdmin').href = 'admin.html' + q;
+  document.getElementById('aLed').href = 'led.html' + q;
+  document.getElementById('info').innerHTML = '방: <code>' + Sync.room + '</code> · 연결 방식: <code>' + (Sync.mode === 'firebase' ? 'Firebase (원격)' : '로컬 테스트') + '</code> · 리허설은 주소 뒤에 <code>?room=rehearsal</code>';
+</script>
+</body>
+</html>
